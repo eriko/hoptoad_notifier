@@ -29,7 +29,7 @@ module HoptoadNotifier
   }
 
   class << self
-    attr_accessor :host, :port, :secure, :api_key, :http_open_timeout, :http_read_timeout,
+    attr_accessor :host, :port, :secure, :api_key, :http_open_timeout, :http_read_timeout, :suburi ,
                   :proxy_host, :proxy_port, :proxy_user, :proxy_pass, :output
 
     def backtrace_filters
@@ -164,7 +164,7 @@ module HoptoadNotifier
     end
 
     def url #:nodoc:
-      URI.parse("#{protocol}://#{host}:#{port}/notices/")
+      URI.parse("#{protocol}://#{host}:#{port}#{suburi ? '/'+suburi : ''}/notices/")
     end
 
     def default_notice_options #:nodoc:
