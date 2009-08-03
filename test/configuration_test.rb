@@ -26,6 +26,7 @@ class ConfigurationTest < Test::Unit::TestCase
         config.proxy_port = '80'
         config.proxy_user = 'user'
         config.proxy_pass = 'secret'
+        config.suburi = 'redmine'
         config.http_open_timeout = 2
         config.http_read_timeout = 5
       end
@@ -38,6 +39,7 @@ class ConfigurationTest < Test::Unit::TestCase
       assert_equal '80',                HoptoadNotifier.proxy_port
       assert_equal 'user',              HoptoadNotifier.proxy_user
       assert_equal 'secret',            HoptoadNotifier.proxy_pass
+      assert_equal 'redmine',           HoptoadNotifier.suburi
       assert_equal 2,                   HoptoadNotifier.http_open_timeout
       assert_equal 5,                   HoptoadNotifier.http_read_timeout
       assert_equal HoptoadNotifier::IGNORE_USER_AGENT_DEFAULT + ['UserAgentString', /UserAgentRegexp/], 

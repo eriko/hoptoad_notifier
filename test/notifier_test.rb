@@ -55,7 +55,7 @@ class NotifierTest < Test::Unit::TestCase
           setup { HoptoadNotifier.notify(@exception) }
 
           before_should "post to Hoptoad" do
-            url = "http://hoptoadapp.com:80/notices/"
+            url = "http://hoptoadapp.com:80/redmine/notices/"
             uri = URI.parse(url)
             URI.expects(:parse).with(url).returns(uri)
             @http.expects(:post).with(uri.path, anything, HoptoadNotifier::HEADERS).returns(@response)
@@ -80,7 +80,7 @@ class NotifierTest < Test::Unit::TestCase
 
           before_should "post to the right url for non-ssl" do
             HoptoadNotifier.secure = false
-            url = "http://hoptoadapp.com:80/notices/"
+            url = "http://hoptoadapp.com:80/redmine/notices/"
             uri = URI.parse(url)
             URI.expects(:parse).with(url).returns(uri)
             @http.expects(:post).with(uri.path, anything, HoptoadNotifier::HEADERS).returns(@response)
